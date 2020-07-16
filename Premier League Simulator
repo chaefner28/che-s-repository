@@ -1,0 +1,223 @@
+#A programme to simulate one game in the premier league any number of times to determine the most likely results or to simulate a season
+import random
+class Team:
+  def __init__(OVR, defe, mid, att,goals,goalsfor,goalsagainst,points,wins,draws,losses, name, goaldifference, form):
+    OVR.defe = defe
+    OVR.mid = mid
+    OVR.att = att
+    OVR.goals = goals
+    OVR.goalsfor = goalsfor
+    OVR.goalsagainst = goalsagainst
+    OVR.points = points
+    OVR.wins = wins
+    OVR.draws = draws
+    OVR.losses = losses
+    OVR.name = name
+    OVR.goaldifference = goaldifference
+    OVR.form = form
+
+#Defining the teams and their abilities
+t1 = Team(80,81,83,0,40,36,0,9,13,6,"ARSENAL",0,3)
+t2 = Team(77,77,78,0,34,56,0,7,4,17,"ASTON VILLA",0,-2)
+t3 = Team(77,77,76,0,29,47,0,7,6,16,"BOURNEMOUTH",0,-2)
+t4 = Team(79,76,77,0,32,49,0,6,11,12,"BRIGHTON",0,-1)
+t5 = Team(78,78,78,0,34,40,0,11,6,12,"BURNLEY",0,2)
+t6 = Team(81,85,82,0,51,39,0,14,6,9,"CHELSEA",0,1)
+t7 = Team(78,79,77,0,26,32,0,10,9,10,"CRYSTAL PALACE",0,1)
+t8 = Team(80,80,82,0,37,46,0,10,7,12,"EVERTON",0,0)
+t9 = Team(80,80,82,0,58,28,0,16,5,8,"LEICESTER",0,-1)
+t10 = Team(86,85,86,0,66,21,0,27,1,1,"LIVERPOOL",0,3)
+t11 = Team(81,85,85,0,68,31,0,18,3,7,"MANCHESTER CITY",0,-1)
+t12 = Team(81,82,81,0,44,30,0,12,9,8,"MANCHESTER UNITED",0,3)
+t13 = Team(78,78,75,0,25,41,0,9,8,12,"NEWCASTLE UNITED",0,-1)
+t14 = Team(73,75,77,0,25,52,0,5,6,18,"NORWICH FC",0,-1)
+t15 = Team(82,80,80,0,30,25,0,11,10,7,"SHEFFIELD UNITED",0,2)
+t16 = Team(77,79,77,0,35,52,0,10,4,15,"SOUTHAMPTON",0,-3)
+t17 = Team(79,80,81,0,47,40,0,11,8,10,"TOTTENHAM HOTSPUR",0,0)
+t18 = Team(76,78,76,0,27,44,0,6,9,14,"WATFORD",0,-2)
+t19 = Team(76,78,78,0,35,50,0,7,6,16,"WEST HAM UNITED",0,-2)
+t20 = Team(82,80,79,0,41,34,0,10,13,6,"WOLVERHAMPTON WANDERERS",0,2)
+
+
+teams_premierleague = [t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18,t19,t20]
+for team in teams_premierleague:
+  team.points = team.wins*3 + team.draws
+#Setting the team's points to their real life counterparts
+
+gameweek30 = [t2,t15,t11,t1,t14,t16,t17,t12,t18,t9,t4,t1,t19,t20,t3,t7,t13,t15,t2,t6,t8,t10,t11,t5,30]
+gameweek31 = [t9,t4,t17,t19,t12,t15,t13,t2,t14,t8,t20,t3,t10,t7,t5,t18,t16,t1,t6,t11,31]
+gameweek32 = [t2,t20,t18,t16,t7,t5,t4,t12,t1,t14,t3,t13,t8,t9,t19,t6,t15,t17,t11,t10,32]
+gameweek33 = [t5,t15,t6,t18,t9,t7,t10,t2,t12,t3,t13,t19,t14,t4,t16,t11,t17,t8,t20,t1,33]
+gameweek34 = [t1,t9,t2,t12,t3,t17,t4,t10,t7,t6,t8,t16,t11,t13,t15,t20,t18,t14,t19,t5,34]
+gameweek35 = [t2,t7,t3,t9,t4,t11,t10,t5,t12,t16,t14,t19,t15,t6,t17,t1,t18,t13,t20,t8,35]
+gameweek36 = [t1,t10,t5,t20,t6,t14,t7,t12,t8,t2,t9,t15,t11,t3,t13,t17,t16,t4,t19,t18,36]
+gameweek37 = [t2,t1,t3,t16,t4,t13,t10,t6,t12,t19,t14,t5,t15,t8,t17,t9,t18,t11,t20,t7,37]
+gameweek38 = [t1,t18,t5,t4,t6,t20,t7,t17,t8,t3,t9,t12,t11,t14,t13,t10,t16,t15,t19,t2,38]
+#Setting the remaining gameweeks
+
+Gameweeks = [gameweek30, gameweek31, gameweek32, gameweek33, gameweek34, gameweek35, gameweek36, gameweek37, gameweek38]
+
+
+def Knockoutgame(h,a,rounds):
+  global Awayteamgoals
+  global Hometeamgoals
+  global anogoalfrequency
+  global aonegoalfrequency
+  global atwogoalfrequency
+  global athreegoalfrequency
+  global afourgoalfrequency
+  global hnogoalfrequency
+  global honegoalfrequency
+  global htwogoalfrequency
+  global hthreegoalfrequency
+  global hfourgoalfrequency
+  x = random.randint(0,65)
+  y = random.randint(0,65)
+  xx = random.randint(0, 20)
+  yy = random.randint(7,27)
+  lowerlimith = random.randint(10,25)
+  lowerlimita = random.randint(10,25)
+  Homechanceofgoal = (h.att + h.mid*0.7 - a.mid*0.7 - a.defe)*1.5 + x + h.form
+  Awaychanceofgoal = (a.att + a.mid*0.7 - h.mid*0.7 - h.defe)*1.5 + y + a.form
+  if Homechanceofgoal < xx + lowerlimith:
+    Hometeamgoals = 0
+  if Homechanceofgoal >= xx + lowerlimith:
+    Hometeamgoals = 1
+  if Homechanceofgoal >= xx + 30:
+    Hometeamgoals = 2
+  if Homechanceofgoal >= xx + 37:
+    Hometeamgoals = 3
+  if Homechanceofgoal >= xx + 45:
+    Hometeamgoals = 4
+  if Awaychanceofgoal < yy + lowerlimita:
+    Awayteamgoals = 0
+  if Awaychanceofgoal >= yy + lowerlimita:
+    Awayteamgoals = 1
+  if Awaychanceofgoal >= yy + 30:
+    Awayteamgoals = 2
+  if Awaychanceofgoal >= yy + 37:
+    Awayteamgoals = 3
+  if Awaychanceofgoal >= yy + 45:
+    Awayteamgoals = 4
+  a.goals = a.goals + Awayteamgoals
+  h.goals = h.goals + Hometeamgoals
+  if Awayteamgoals == 0:
+    anogoalfrequency = anogoalfrequency + 1
+  if Awayteamgoals == 1:
+    aonegoalfrequency = aonegoalfrequency + 1
+  if Awayteamgoals == 2:
+    atwogoalfrequency = atwogoalfrequency + 1
+  if Awayteamgoals == 3:
+    athreegoalfrequency = athreegoalfrequency + 1
+  if Awayteamgoals == 4:
+    afourgoalfrequency = afourgoalfrequency + 1
+  if Hometeamgoals == 0:
+    hnogoalfrequency = hnogoalfrequency + 1
+  if Hometeamgoals == 1:
+    honegoalfrequency = honegoalfrequency + 1
+  if Hometeamgoals == 2:
+    htwogoalfrequency = htwogoalfrequency + 1
+  if Hometeamgoals == 3:
+    hthreegoalfrequency = hthreegoalfrequency + 1
+  if Hometeamgoals == 4:
+    hfourgoalfrequency = hfourgoalfrequency + 1
+  if jojo == rounds :
+    print(h.name, round(h.goals/(rounds)), "-", round(a.goals/(rounds)), a.name)
+##    print("\n")
+##    print(h.name, "'s chance of scoring 0 goals is -", hnogoalfrequency/(rounds)*100, "%")
+##    print(h.name, "'s chance of scoring 1 goal is -", honegoalfrequency/(rounds)*100, "%")
+##    print(h.name, "'s chance of scoring 2 goals is -", htwogoalfrequency/(rounds)*100, "%")
+##    print(h.name, "'s chance of scoring 3 goals is -", hthreegoalfrequency/(rounds)*100, "%")
+##    print(h.name, "'s chance of scoring 4 goals is -", hfourgoalfrequency/(rounds)*100, "%")
+##    print("\n\n\n")
+##    print(a.name, "'s chance of scoring 0 goals is -", anogoalfrequency/(rounds)*100, "%")
+##    print(a.name, "'s chance of scoring 1 goal is -", aonegoalfrequency/(rounds)*100, "%")
+##    print(a.name, "'s chance of scoring 2 goals is -", atwogoalfrequency/(rounds)*100, "%")
+##    print(a.name, "'s chance of scoring 3 goals is -", athreegoalfrequency/(rounds)*100, "%")
+##    print(a.name, "'s chance of scoring 4 goals is -", afourgoalfrequency/(rounds)*100, "%")
+##    print("\n\n")
+  
+    h.goalsfor = h.goalsfor + Hometeamgoals
+    a.goalsfor = a.goalsfor + Awayteamgoals
+    a.goalsagainst = a.goalsagainst + Hometeamgoals
+    h.goalsagainst = h.goalsagainst + Awayteamgoals
+    if round(h.goals/rounds) > round(a.goals/rounds):
+      h.points = h.points + 3
+      h.wins = h.wins + 1
+      a.losses = a.losses + 1
+      a.form = a.form - 1
+      h.form = h.form + 1
+    elif round(h.goals/rounds) < round(a.goals/rounds):
+      a.points = a.points + 3
+      a.wins = a.wins + 1
+      h.losses = h.losses + 1
+      h.form = h.form - 1
+      a.form = a.form + 1
+    elif round(h.goals/rounds) == round(a.goals/rounds):
+      h.points = h.points + 1
+      a.points = a.points + 1
+      h.draws = h.draws + 1
+      a.draws = a.draws + 1
+    h.goals = 0
+    a.goals = 0
+    anogoalfrequency = 0
+    aonegoalfrequency = 0
+    atwogoalfrequency = 0
+    athreegoalfrequency = 0
+    afourgoalfrequency = 0
+    hnogoalfrequency = 0
+    honegoalfrequency = 0
+    htwogoalfrequency = 0
+    hthreegoalfrequency =0
+    hfourgoalfrequency = 0
+    for team in teams_premierleague:
+      team.form = team.form + (random.randint(-1,1))/2
+      if team.form > 5:
+        team.form =4
+      if team.form < -5:
+        team.form = -4
+#The above inputs the team strength and outputs their results
+
+
+anogoalfrequency = 0
+aonegoalfrequency = 0
+atwogoalfrequency = 0
+athreegoalfrequency = 0
+afourgoalfrequency = 0
+hnogoalfrequency = 0
+honegoalfrequency = 0
+htwogoalfrequency = 0
+hthreegoalfrequency =0
+hfourgoalfrequency = 0
+roundsnumber = 1000
+for gameweek in Gameweeks:
+  print("\n\n")
+  print("GAMEWEEK", gameweek[len(gameweek)-1], "\n\n")
+  while len(gameweek) > 1:
+    global jojo
+    for team in teams_premierleague:
+      team.goals = 0
+    jojo = 1
+    while jojo < roundsnumber + 1:
+      Knockoutgame(gameweek[0],gameweek[1],roundsnumber)
+      jojo = jojo + 1
+    if jojo == roundsnumber + 1:
+      gameweek.pop(0)
+      gameweek.pop(0)
+
+# The above runs all remaining Game weeks and produces the results
+
+
+print("\n\n")
+for team in teams_premierleague:
+  team.goaldifference = team.goalsfor - team.goalsagainst
+sorted_teams = sorted(teams_premierleague, key = lambda teams:(teams.points, teams.goaldifference), reverse = True)
+print("| TEAM                      | POINTS | WINS | DRAWS | LOSSES | GOALS FOR | GOALS AGAINST | GOAL DIFFERENCE |")
+for team in sorted_teams :
+  print("|",team.name," "*(24-len(team.name)),"|  ",team.points," "*(3-len(str(team.points))),"| ",team.wins,
+         " "*(2 - len(str(team.wins))),"|  ", team.draws," "*(2-len(str(team.draws))),"|  ",team.losses,
+          " "*(3 - len(str(team.losses))),"|   ",team.goalsfor," "*(5 - len(str(team.goalsfor))),"|     ",team.goalsagainst,
+           " "*(6-len(str(team.goalsagainst)))," |      ",team.goaldifference," "*(4 - len(str(team.goaldifference))),"    |")
+
+#The above prints out a table of the results.
+
